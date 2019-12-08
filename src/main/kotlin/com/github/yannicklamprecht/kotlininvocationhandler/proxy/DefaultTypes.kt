@@ -13,5 +13,15 @@ object DefaultTypes {
 }
 
 fun <T> Array<T>.humanReadable(): String {
-    return this.joinToString(separator = ", ") { it.toString() }
+    return "[${this.joinToString(separator = ", ") {
+
+        if ( it is Array<*>){
+            return@joinToString "${it.javaClass.simpleName}(elements=${it.humanReadable()})"
+        }
+        it.toString()
+    }}]"
+}
+
+fun String.toString(): String {
+    return this
 }
