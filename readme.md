@@ -1,0 +1,1 @@
+# Kotlin Examples for Dynamic Proxy with an abstraction level and some generic class utility
