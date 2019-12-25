@@ -16,7 +16,7 @@ class Example : Ex {
 
 
 fun main() {
-    val ex = (Example() as Ex).proxy(DefaultTypes::logging)
+    val ex = Example().proxy<Ex>(DefaultTypes::logging)
 
     ex.play("Hello")
     ex.play()
