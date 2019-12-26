@@ -13,7 +13,7 @@ class ExampleTwo {
 
     init {
         val handler = CommandHandler()
-        val command = Command("test", "command.test", executor = TestExecutor())
+        val command = Command("test", "command.test", executor = { _: User, _: Array<String> -> println("[TestExecutor] execute called")})
         val user = User("name", listOf("command.test"))
         handler.addCommand(command)
         val name = "test"
@@ -24,12 +24,6 @@ class ExampleTwo {
         handler.execute(user, name, param)
     }
 
-}
-
-class TestExecutor : CommandExecutor {
-    override fun execute(sender: User, args: Array<String>) {
-        println("[TestExecutor] execute called")
-    }
 }
 
 

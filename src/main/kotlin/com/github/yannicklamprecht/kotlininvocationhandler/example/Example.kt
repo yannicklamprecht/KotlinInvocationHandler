@@ -3,12 +3,12 @@ package com.github.yannicklamprecht.kotlininvocationhandler.example
 import com.github.yannicklamprecht.kotlininvocationhandler.proxy.DefaultTypes
 import com.github.yannicklamprecht.kotlininvocationhandler.proxy.proxy
 
-class Example : Ex {
-    override fun play(text: String) {
+open class Example {
+    fun play(text: String) {
         println("play called")
     }
 
-    override fun play() {
+    fun play() {
         println("No Args call")
     }
 
@@ -16,7 +16,7 @@ class Example : Ex {
 
 
 fun main() {
-    val ex = Example().proxy<Ex>(DefaultTypes::logging)
+    val ex: Example = Example().proxy(DefaultTypes::logging)
 
     ex.play("Hello")
     ex.play()
